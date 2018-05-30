@@ -8,6 +8,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class View extends JFrame {
 
@@ -17,18 +19,7 @@ public class View extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					View frame = new View();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
@@ -53,6 +44,21 @@ public class View extends JFrame {
 		txtCerca.setColumns(10);
 		
 		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Main.temp=Main.L;
+				while(Main.temp!=null) {
+					
+					if(Main.temp.getName().compareTo(txtCerca.getText())==0) {
+						System.out.println(txtCerca.getText());
+						Info l=new Info(Main.temp.getName(),Main.temp.getInfo(),Main.temp.getScadenza());
+						l.setVisible(true);
+						l.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					}
+					Main.temp=Main.temp.next;
+				}
+			}
+		});
 		btnNewButton.setBounds(362, 16, 27, 23);
 		contentPane.add(btnNewButton);
 	}

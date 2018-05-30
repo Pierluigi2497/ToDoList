@@ -7,12 +7,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Main extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	static Proj L;
+	static Proj temp;
 
 	/**
 	 * Launch the application.
@@ -42,10 +46,24 @@ public class Main extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNuovo = new JButton("Nuovo");
+		btnNuovo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				New nuovo=new New();
+				nuovo.setVisible(true);
+				nuovo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
+		});
 		btnNuovo.setBounds(10, 28, 89, 23);
 		contentPane.add(btnNuovo);
 		
 		JButton btnVisualizza = new JButton("Visualizza");
+		btnVisualizza.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				View visualizza=new View();
+				visualizza.setVisible(true);
+				visualizza.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			}
+		});
 		btnVisualizza.setBounds(10, 75, 89, 23);
 		contentPane.add(btnVisualizza);
 		
@@ -54,6 +72,11 @@ public class Main extends JFrame {
 		contentPane.add(btnCancella);
 		
 		JButton btnAiuto = new JButton("Aiuto");
+		btnAiuto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnAiuto.setBounds(10, 178, 89, 23);
 		contentPane.add(btnAiuto);
 		

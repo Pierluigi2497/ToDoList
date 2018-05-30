@@ -9,6 +9,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class New extends JFrame {
 
@@ -78,6 +80,23 @@ public class New extends JFrame {
 		contentPane.add(textArea);
 		
 		JButton btnSalva = new JButton("Salva");
+		btnSalva.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Main.temp=Main.L;
+				if(Main.L==null) {
+					Main.L=new Proj();
+					Main.L.setName(textField.getText());
+					Main.L.setInfo(textArea.getText());
+					Main.L.setScadenza(textField_1.getText());
+				}
+				else { while(Main.temp.next!=null)
+						Main.temp=Main.temp.next;
+						Main.temp.setName(textField.getText());
+						Main.temp.setInfo(textArea.getText());
+						Main.temp.setScadenza(textField_1.getText());
+				}
+			}
+		});
 		btnSalva.setBounds(361, 228, 63, 23);
 		contentPane.add(btnSalva);
 	}
